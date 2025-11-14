@@ -56,14 +56,11 @@ Match based on:
 ## Tech Stack
 
 This project uses:
-- **Frontend:** React Native (Expo)  
-- **Backend:** Flask or Node  
-- **Database:** PostgreSQL  
-- **Auth:** Firebase or Auth0  
-- **Storage:** Cloudinary for images  
-- **Real-Time Messaging:** Socket.io  
-
-Feel free to swap these based on your implementation.
+- **Frontend:** Swift  
+- **Backend:** Swift  
+- **Database:** Firebase  
+- **Auth:** Firebase Auth
+- **Storage:** Firestore 
 
 ---
 
