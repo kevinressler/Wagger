@@ -81,11 +81,3 @@ Send a message in a BarkBoard chat thread.
 *(These endpoints are placeholders; update based on your backend.)*
 
 ---
-
-## Running Locally
-
-```bash
-git clone https://github.com/your-username/wagger.git
-cd wagger
-npm install      # or pip install -r requirements.txt for Flask
-npm start        # or flask run
