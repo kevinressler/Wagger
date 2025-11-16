@@ -40,7 +40,7 @@ Match based on:
 ## How It Works
 
 1. **Create your PupCard**  
-   Add photos and details about you and your dog.
+   If you have a dog, add photos and details about you and your dog. If you're looking for a dog, select your location and breed preferences. 
 
 2. **Start Wagging**  
    Browse local profiles and wag the ones you like.
@@ -56,11 +56,11 @@ Match based on:
 ## Tech Stack
 
 This project uses:
-- **Frontend:** Swift  
-- **Backend:** Swift  
-- **Database:** Firebase  
-- **Auth:** Firebase Auth
-- **Storage:** Firestore 
+- **Frontend:** ReactJS
+- **Backend:** FLASK
+- **Database:** PostgreSQL
+- **Version Control:** GitHub
+- **Deployment:** Local 
 
 ---
 
