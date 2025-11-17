@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import LoginPage from "./login.jsx";
+import LoginPage from "./SwipePage.jsx";
 
 function App() {
   const [user, setUser] = useState(null);
