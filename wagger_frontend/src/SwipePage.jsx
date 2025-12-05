@@ -1,28 +1,40 @@
 import React, { useState } from "react";
 import "./SwipePage.css";
 
-const DOGS = [
-  {
-    id: 1,
-    name: "Luna",
-    age: 3,
-    breed: "Border Collie",
-    distance: "2 miles away",
-    bio: "Ball-obsessed genius. Needs lots of fetch and brain games.",
-    image: "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg",
-    tags: ["High energy", "Good with kids", "Needs long walks"],
-  },
-  {
-    id: 2,
-    name: "Moose",
-    age: 5,
-    breed: "Golden Retriever",
-    distance: "0.8 miles away",
-    bio: "Professional good boy. Loves belly rubs and chill walks.",
-    image: "https://images.pexels.com/photos/2253275/pexels-photo-2253275.jpeg",
-    tags: ["Chill", "Good with other dogs", "Beginner friendly"],
-  },
-];
+// const [DOGS, setDogs] = useState([]);
+
+//   useEffect(() => {
+//     fetch('http://localhost:5000/api/dogs')
+//       .then(res => res.json())
+//       .then(data => {
+//         console.log('Dogs:', data);
+//         setDogs(data);
+//       })
+//       .catch(err => console.error('Error:', err));
+//   }, []);
+
+// const DOGS = [
+//   {
+//     id: 1,
+//     name: "Luna",
+//     age: 3,
+//     breed: "Border Collie",
+//     distance: "2 miles away",
+//     bio: "Ball-obsessed genius. Needs lots of fetch and brain games.",
+//     image: "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg",
+//     tags: ["High energy", "Good with kids", "Needs long walks"],
+//   },
+//   {
+//     id: 2,
+//     name: "Moose",
+//     age: 5,
+//     breed: "Golden Retriever",
+//     distance: "0.8 miles away",
+//     bio: "Professional good boy. Loves belly rubs and chill walks.",
+//     image: "https://images.pexels.com/photos/2253275/pexels-photo-2253275.jpeg",
+//     tags: ["Chill", "Good with other dogs", "Beginner friendly"],
+//   },
+// ];
 
 export default function SwipePage() {
   const [index, setIndex] = useState(0);
