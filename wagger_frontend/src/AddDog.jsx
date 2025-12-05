@@ -36,12 +36,11 @@ export default function AddDog() {
       : [];
 
     const dogData = {
-      name: form.name,
+      dog_name: form.name,
       age: parseInt(form.age, 10),
       breed: form.breed,
       distance: form.distance || "Unknown distance",
       bio: form.bio,
-      image: "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg",
       tags: tagsArray,
     };
 
@@ -57,9 +56,22 @@ export default function AddDog() {
       console.log("Dog data to submit:", dogData);
       
       // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      //await new Promise((resolve) => setTimeout(resolve, 500));
+      
+      const response = await fetch('http://localhost:5000/api/dogs', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(dogData)
+      });
+
+      const result = await response.json();
+      console.log('Dog added:', result);
+      alert('Dog added successfully!');
       
       setSuccess(true);
+
       // Reset form
       setForm({
         name: "",
