@@ -192,6 +192,25 @@
   text-align: center;
 }
 
+/* FindDogs component styles for dashboard */
+.find-dogs-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 1rem 0;
+}
+
+.find-dogs-container h1,
+.find-dogs-container p {
+  text-align: center;
+  color: #e5e7eb;
+}
+
+.find-dogs-container .dog-card {
+  max-width: 600px;
+  width: 100%;
+}
+
 /* ---------- LIGHT REACTIVITY (not mobile-first) ---------- */
 
 /* Slightly narrower screens: let sidebar shrink before breaking */
