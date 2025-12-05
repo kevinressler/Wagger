@@ -8,7 +8,6 @@ export default function AddDog() {
     breed: "",
     distance: "",
     bio: "",
-    image: "",
     tags: "",
   });
 
@@ -42,7 +41,7 @@ export default function AddDog() {
       breed: form.breed,
       distance: form.distance || "Unknown distance",
       bio: form.bio,
-      image: form.image || "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg",
+      image: "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg",
       tags: tagsArray,
     };
 
@@ -68,7 +67,6 @@ export default function AddDog() {
         breed: "",
         distance: "",
         bio: "",
-        image: "",
         tags: "",
       });
       
@@ -87,7 +85,7 @@ export default function AddDog() {
         <form onSubmit={handleSubmit} className="add-dog-form">
           <div className="form-row">
             <label className="field">
-              <span>Name *</span>
+              <span>Name</span>
               <input
                 type="text"
                 name="name"
@@ -99,7 +97,7 @@ export default function AddDog() {
             </label>
 
             <label className="field">
-              <span>Age *</span>
+              <span>Age</span>
               <input
                 type="number"
                 name="age"
@@ -115,7 +113,7 @@ export default function AddDog() {
 
           <div className="form-row">
             <label className="field">
-              <span>Breed *</span>
+              <span>Breed</span>
               <input
                 type="text"
                 name="breed"
@@ -131,7 +129,7 @@ export default function AddDog() {
               <input
                 type="text"
                 name="distance"
-                placeholder="2 miles away"
+                placeholder="2 (miles away)"
                 value={form.distance}
                 onChange={handleChange}
               />
@@ -139,7 +137,7 @@ export default function AddDog() {
           </div>
 
           <label className="field">
-            <span>Bio *</span>
+            <span>Bio</span>
             <textarea
               name="bio"
               placeholder="Tell us about your dog's personality, interests, and what makes them special..."
@@ -147,17 +145,6 @@ export default function AddDog() {
               value={form.bio}
               onChange={handleChange}
               required
-            />
-          </label>
-
-          <label className="field">
-            <span>Image URL</span>
-            <input
-              type="url"
-              name="image"
-              placeholder="https://images.pexels.com/photos/..."
-              value={form.image}
-              onChange={handleChange}
             />
           </label>
 

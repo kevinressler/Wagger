@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import LoginPage from "./login.jsx";
 import Dashboard from "./Dashboard.jsx";
@@ -7,6 +7,46 @@ import AddDog from "./AddDog.jsx";
 
 function App() {
   const [user, setUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Load user from localStorage on mount
+  useEffect(() => {
+    const savedUser = localStorage.getItem("wagger_user");
+    if (savedUser) {
+      try {
+        setUser(JSON.parse(savedUser));
+      } catch (e) {
+        console.error("Error parsing saved user:", e);
+        localStorage.removeItem("wagger_user");
+      }
+    }
+    setIsLoading(false);
+  }, []);
+
+  // Save user to localStorage when it changes
+  useEffect(() => {
+    if (user) {
+      localStorage.setItem("wagger_user", JSON.stringify(user));
+    } else {
+      localStorage.removeItem("wagger_user");
+    }
+  }, [user]);
+
+  // Show loading state while checking for saved user
+  if (isLoading) {
+    return (
+      <div style={{ 
+        display: "flex", 
+        justifyContent: "center", 
+        alignItems: "center", 
+        height: "100vh",
+        background: "#020617",
+        color: "#e5e7eb"
+      }}>
+        Loading...
+      </div>
+    );
+  }
 
   return (
     <BrowserRouter>
