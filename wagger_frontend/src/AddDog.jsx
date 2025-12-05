@@ -85,7 +85,7 @@ export default function AddDog() {
         <form onSubmit={handleSubmit} className="add-dog-form">
           <div className="form-row">
             <label className="field">
-              <span>Name *</span>
+              <span>Name</span>
               <input
                 type="text"
                 name="name"
@@ -97,7 +97,7 @@ export default function AddDog() {
             </label>
 
             <label className="field">
-              <span>Age *</span>
+              <span>Age</span>
               <input
                 type="number"
                 name="age"
@@ -113,7 +113,7 @@ export default function AddDog() {
 
           <div className="form-row">
             <label className="field">
-              <span>Breed *</span>
+              <span>Breed</span>
               <input
                 type="text"
                 name="breed"
@@ -137,7 +137,7 @@ export default function AddDog() {
           </div>
 
           <label className="field">
-            <span>Bio *</span>
+            <span>Bio</span>
             <textarea
               name="bio"
               placeholder="Tell us about your dog's personality, interests, and what makes them special..."
