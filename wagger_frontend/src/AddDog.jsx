@@ -8,7 +8,6 @@ export default function AddDog() {
     breed: "",
     distance: "",
     bio: "",
-    image: "",
     tags: "",
   });
 
@@ -42,7 +41,7 @@ export default function AddDog() {
       breed: form.breed,
       distance: form.distance || "Unknown distance",
       bio: form.bio,
-      image: form.image || "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg",
+      image: "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg",
       tags: tagsArray,
     };
 
@@ -68,7 +67,6 @@ export default function AddDog() {
         breed: "",
         distance: "",
         bio: "",
-        image: "",
         tags: "",
       });
       
@@ -131,7 +129,7 @@ export default function AddDog() {
               <input
                 type="text"
                 name="distance"
-                placeholder="2 miles away"
+                placeholder="2 (miles away)"
                 value={form.distance}
                 onChange={handleChange}
               />
@@ -147,17 +145,6 @@ export default function AddDog() {
               value={form.bio}
               onChange={handleChange}
               required
-            />
-          </label>
-
-          <label className="field">
-            <span>Image URL</span>
-            <input
-              type="url"
-              name="image"
-              placeholder="https://images.pexels.com/photos/..."
-              value={form.image}
-              onChange={handleChange}
             />
           </label>
 
