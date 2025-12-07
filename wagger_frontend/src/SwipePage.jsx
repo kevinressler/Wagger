@@ -1,47 +1,88 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./SwipePage.css";
 
-// const [DOGS, setDogs] = useState([]);
+// Import all dog images from the img folder
+const dogImages = import.meta.glob('./img/*.{jpg,jpeg,png}', { eager: true });
+const imagePaths = Object.values(dogImages).map(img => img.default);
 
-//   useEffect(() => {
-//     fetch('http://localhost:5000/api/dogs')
-//       .then(res => res.json())
-//       .then(data => {
-//         console.log('Dogs:', data);
-//         setDogs(data);
-//       })
-//       .catch(err => console.error('Error:', err));
-//   }, []);
-
-// const DOGS = [
-//   {
-//     id: 1,
-//     name: "Luna",
-//     age: 3,
-//     breed: "Border Collie",
-//     distance: "2 miles away",
-//     bio: "Ball-obsessed genius. Needs lots of fetch and brain games.",
-//     image: "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg",
-//     tags: ["High energy", "Good with kids", "Needs long walks"],
-//   },
-//   {
-//     id: 2,
-//     name: "Moose",
-//     age: 5,
-//     breed: "Golden Retriever",
-//     distance: "0.8 miles away",
-//     bio: "Professional good boy. Loves belly rubs and chill walks.",
-//     image: "https://images.pexels.com/photos/2253275/pexels-photo-2253275.jpeg",
-//     tags: ["Chill", "Good with other dogs", "Beginner friendly"],
-//   },
-// ];
+// Function to get a random dog image
+function getRandomDogImage() {
+  const randomIndex = Math.floor(Math.random() * imagePaths.length);
+  return imagePaths[randomIndex];
+}
 
 export default function SwipePage() {
+  const [dogs, setDogs] = useState([]);
   const [index, setIndex] = useState(0);
-  const dog = DOGS[index];
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('http://localhost:5000/api/dogs')
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json();
+      })
+      .then(data => {
+        console.log('Dogs response:', data);
+        
+        // Check if data is an array
+        if (!Array.isArray(data)) {
+          console.error('Expected array but got:', data);
+          setDogs([]);
+          setLoading(false);
+          return;
+        }
+        
+        // Map database fields to component expected fields
+        const mappedDogs = data.map(dog => ({
+          id: dog.id,
+          name: dog.dog_name,
+          age: dog.age,
+          breed: dog.breed,
+          distance: dog.distance ? `${dog.distance} miles away` : "Distance unknown",
+          bio: dog.bio || "No bio available",
+          image: getRandomDogImage(), // Use random local image from img folder
+          tags: dog.tags || []
+        }));
+        console.log('Mapped dogs:', mappedDogs);
+        setDogs(mappedDogs);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Error fetching dogs:', err);
+        setDogs([]);
+        setLoading(false);
+      });
+  }, []);
+
+  const dog = dogs[index];
 
   function swipe(dir) {
     setIndex((i) => i + 1);
+  }
+
+  if (loading) {
+    return (
+      <div className="swipe-page">
+        <div className="swipe-container">
+          <h1>Loading dogs...</h1>
+          <p>Fetching the best pups for you 🐶</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (dogs.length === 0) {
+    return (
+      <div className="swipe-page">
+        <div className="swipe-container">
+          <h1>No dogs available</h1>
+          <p>There are no dogs in the database. Add some dogs to get started! 🐶</p>
+        </div>
+      </div>
+    );
   }
 
   if (!dog) {
@@ -49,7 +90,7 @@ export default function SwipePage() {
       <div className="swipe-page">
         <div className="swipe-container">
           <h1>No more dogs!</h1>
-          <p>Check back later for more pups to walk 🐶</p>
+          <p>You've seen all available dogs. Check back later for more pups to walk 🐶</p>
         </div>
       </div>
     );
