@@ -5,7 +5,10 @@ Wagger is a playful matching app for **dog owners** and **dog lovers**. Instead 
 
 ---
 ## Run Instructions
+Make sure you have Node.js installed
+In wagger_backend check the connection to the database by running node server.js. It should say "Connected to PostgreSQL"
 In wagger_frontend run npm run dev :) 
+
 
 ## Features
 
