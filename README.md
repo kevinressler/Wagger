@@ -4,6 +4,8 @@ Find your perfect match… one wag at a time.
 Wagger is a playful matching app for **dog owners** and **dog lovers**. Instead of swiping, you **wag** through profiles to find walking buddies, play-date partners, sitters, or something more. It’s Tinder meets your local dog park.
 
 ---
+## Run Instructions
+In wagger_frontend run npm run dev :) 
 
 ## Features
 
